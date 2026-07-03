@@ -3,7 +3,7 @@
 
 import { ThreeEditor } from 'three-webgpu-editor'
 
-ThreeEditor.dracoPath = __isProduction__ ? '/threejs-editor/draco/' : '/draco/'
+ThreeEditor.dracoPath = __isProduction__ ? '/three-webgpu-editor/draco/' : '/draco/'
 
 ThreeEditor.__DESIGNS__.unshift(...Object.values(import.meta.glob('./compoents/\*.js', { eager: true, import: 'default' }))) 
 

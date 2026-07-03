@@ -215,7 +215,7 @@ if(route.query?.undark) document.getElementsByTagName('html')[0].classList.remov
 if (route.query.sceneName) {
     namePreviewScene = true
     const sn = 'editorJson/' + route.query.sceneName + '.json'
-    window.editorPreviewSceneUrl = __isProduction__ ? '/threejs-editor/' + sn : '/' + sn
+    window.editorPreviewSceneUrl = __isProduction__ ? '/three-webgpu-editor/' + sn : '/' + sn
     
 }
 

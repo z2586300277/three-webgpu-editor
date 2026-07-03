@@ -62,6 +62,11 @@ export default defineConfig({
 
   base: './',
 
+  build: {
+
+    outDir: 'docs',
+
+  },
   server: {
 
     port: 5891,
