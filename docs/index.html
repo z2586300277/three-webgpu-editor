@@ -1,22 +1,8 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+<!doctype html>
+<html lang="en" class="dark">
 
-export default defineConfig({
+<head>
 
-  define: {
-
-    __isProduction__: process.env.NODE_ENV === 'production'
-
-  },
-
-  plugins: [
-    {
-
-      transformIndexHtml: html => {
-
-        if (process.env.NODE_ENV === 'production') {
-
-          html = html.replace(/<head>/, `<head>\n
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8697430839896878" crossorigin="anonymous"></script> 
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKJQBJNGVF"></script>
           <script>
@@ -35,34 +21,20 @@ export default defineConfig({
               s.parentNode.insertBefore(hm, s);
             })();
             </script>
-          `)
+          
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./site.png" />
+  <meta name="keywords" content="threejs,cesium,模型,渲染,lowcode,editor,3d,三维,低代码,编辑器,无代码" />
+  <meta name="description" content="一款基于three.js快速使用的三维低代码编辑器" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>三维低代码编辑器</title>
+  <script type="module" crossorigin src="./assets/index-Dp2lnRdl.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BL8Re2YQ.css">
+</head>
 
-        }
+<body>
+  <div id="app"></div>
+  <script src="./config.js"></script>
+</body>
 
-        return html
-
-      }
-    },
-
-    vue()
-
-  ],
-
-  base: './',
-
-  build: {
-
-    outDir: 'docs',
-
-  },
-  server: {
-
-    port: 5891,
-
-    open: true,
-
-    host: '0.0.0.0'
-
-  }
-
-})
+</html>
