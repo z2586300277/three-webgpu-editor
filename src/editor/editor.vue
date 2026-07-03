@@ -18,13 +18,13 @@ const emits = defineEmits(['emitThreeEditor'])
 
 watch(() => dataCores.sceneName, (val) => {
 
-    let params = localStorage.getItem(val + '-newEditor')
+    let params = localStorage.getItem(val + '-webgpuEditor')
     params = JSON.parse(params) || tamplateJson
     
     try {
         threeEditor.resetEditorStorage(changeDBModelUrl(params))
     } catch (error) {
-        localStorage.removeItem(val + '-newEditor')
+        localStorage.removeItem(val + '-webgpuEditor')
     }
 
 })
@@ -34,7 +34,7 @@ async function init() {
 
     try {
         
-        let sceneParams = JSON.parse(localStorage.getItem(dataCores.sceneName + '-newEditor')) || tamplateJson
+        let sceneParams = JSON.parse(localStorage.getItem(dataCores.sceneName + '-webgpuEditor')) || tamplateJson
         if (window.editorPreviewSceneUrl) {
             try {
                 const res = await fetch(window.editorPreviewSceneUrl).then(res => res.json())
@@ -43,9 +43,9 @@ async function init() {
         }
 
         let logarithmicDepthBuffer = true
-        if (localStorage.getItem('new_threeEditor_logBuffer') === 'false') logarithmicDepthBuffer = false
+        if (localStorage.getItem('webgpuEditor_logBuffer') === 'false') logarithmicDepthBuffer = false
         let pixelRatioMulti = 1
-        if (localStorage.getItem('new_threeEditor_pixelRatio')) pixelRatioMulti = parseFloat(localStorage.getItem('new_threeEditor_pixelRatio'))
+        if (localStorage.getItem('webgpuEditor_pixelRatio')) pixelRatioMulti = parseFloat(localStorage.getItem('webgpuEditor_pixelRatio'))
         threeEditor = new ThreeEditor(editor.value, {
             fps: null,
             pixelRatio: window.devicePixelRatio * pixelRatioMulti,
@@ -53,7 +53,7 @@ async function init() {
             sceneParams: changeDBModelUrl(sceneParams)
         })
     } catch (error) {
-        localStorage.removeItem(dataCores.sceneName + '-newEditor')
+        localStorage.removeItem(dataCores.sceneName + '-webgpuEditor')
     }
 
 

@@ -193,9 +193,9 @@ const toggleAxes = (val) => {
 
 // 像素比设置
 const pixelRatio = ref(1)
-if (localStorage.getItem('new_threeEditor_pixelRatio')) pixelRatio.value = parseFloat(localStorage.getItem('new_threeEditor_pixelRatio'))
+if (localStorage.getItem('webgpu_threeEditor_pixelRatio')) pixelRatio.value = parseFloat(localStorage.getItem('webgpu_threeEditor_pixelRatio'))
 watch(pixelRatio, (val) => {
-    localStorage.setItem('new_threeEditor_pixelRatio', val)
+    localStorage.setItem('webgpu_threeEditor_pixelRatio', val)
     setTimeout(() => {
         window.location.reload()
     }, 500);
@@ -217,9 +217,9 @@ const openLink = (url) => {
 }
 
 const logbuffer = ref(true)
-if (localStorage.getItem('new_threeEditor_logBuffer') === 'false') logbuffer.value = false
+if (localStorage.getItem('webgpu_threeEditor_logBuffer') === 'false') logbuffer.value = false
 watch(logbuffer, (val) => {
-    localStorage.setItem('new_threeEditor_logBuffer', val)
+    localStorage.setItem('webgpu_threeEditor_logBuffer', val)
     setTimeout(() => {
         window.location.reload()
     }, 500);

@@ -230,8 +230,8 @@ const rightCollapsed = ref(false)
 const rightClickMenusEnable = ref(false)
 const openKeyEnable = ref(false)
 const dataCores = reactive({
-  sceneName: localStorage.getItem('new_sceneName') || '三维测试',
-  options: JSON.parse(localStorage.getItem('new_sceneList')) || [{ name: '三维测试' }]
+  sceneName: localStorage.getItem('webgpu_sceneName') || '三维测试',
+  options: JSON.parse(localStorage.getItem('webgpu_sceneList')) || [{ name: '三维测试' }]
 })
 
 const openUrl = (url) => window.open(url, '_blank')
@@ -242,9 +242,9 @@ watch(openKeyEnable, (val) => threeEditor.handler.openKeyEnable = val)
 watch(previewScene, (val) => {
   leftCollapsed.value = val
   rightCollapsed.value = val
-  localStorage.setItem('new_previewScene', val)
+  localStorage.setItem('webgpu_previewScene', val)
 })
-if (localStorage.getItem('new_previewScene') === 'true') {
+if (localStorage.getItem('webgpu_previewScene') === 'true') {
   previewScene.value = true
   leftCollapsed.value = true
   rightCollapsed.value = true
@@ -289,8 +289,8 @@ const emitThreeEditor = (threeEditor) => {
 }
 
 function saveLocal() {
-  localStorage.setItem('new_sceneList', JSON.stringify(dataCores.options))
-  localStorage.setItem('new_sceneName', dataCores.sceneName)
+  localStorage.setItem('webgpu_sceneList', JSON.stringify(dataCores.options))
+  localStorage.setItem('webgpu_sceneName', dataCores.sceneName)
 }
 
 function createEditor() {
@@ -306,7 +306,7 @@ function delScene(item) {
   const index = dataCores.options.findIndex(i => i.name === item.name)
   if (index > -1) {
     dataCores.options.splice(index, 1)
-    localStorage.removeItem(item.name + '-newEditor')
+    localStorage.removeItem(item.name + '-webgpuEditor')
     saveLocal()
     if (dataCores.sceneName === item.name) dataCores.sceneName = dataCores.options[0]?.name || '三维测试'
   }
@@ -332,7 +332,7 @@ function pict() {
 }
 
 function saveScene() {
-  if (dataCores.options.find(item => item.name === dataCores.sceneName)) localStorage.setItem(dataCores.sceneName + '-newEditor', JSON.stringify(threeEditor.saveSceneEdit()))
+  if (dataCores.options.find(item => item.name === dataCores.sceneName)) localStorage.setItem(dataCores.sceneName + '-webgpuEditor', JSON.stringify(threeEditor.saveSceneEdit()))
   else dataCores.sceneName = ''
   ElMessage.success('保存成功')
   saveLocal()

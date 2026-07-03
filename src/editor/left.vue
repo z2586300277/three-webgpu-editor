@@ -71,7 +71,7 @@ const data = [
   }
 ];
 
-const activeLocal = localStorage.getItem('new_active')
+const activeLocal = localStorage.getItem('webgpu_active')
 const showList = ref(data.find(v => v.title === activeLocal)?.list || data[0].list);
 const active = ref(activeLocal || data[0].title);
 const searchText = ref('');
@@ -84,7 +84,7 @@ const filteredList = computed(() => {
 });
 
 function setActive(item) {
-  localStorage.setItem('new_active', item.title);
+  localStorage.setItem('webgpu_active', item.title);
   active.value = item.title;
   showList.value = item.list;
   searchText.value = '';
